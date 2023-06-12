@@ -31,7 +31,7 @@ const userSchema = new mongoose.Schema({
   },
   courses: {
     type: mongoose.Schema.Types.ObjectId,
-    ref:"course",
+    ref:"Course",
   },
   image:{
     type: String,
@@ -40,6 +40,12 @@ const userSchema = new mongoose.Schema({
   courseProgess:{
     type: mongoose.Schema.Types.ObjectId,
     ref:"CourseProgress",
+  },
+  token:{
+    type: String,
+  },
+  resetPasswodExpires:{
+    type: Date,
   }
 });
 

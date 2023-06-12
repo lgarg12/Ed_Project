@@ -11,6 +11,6 @@ const Section = new mongoose.Schema({
     }
 });
 
-const User = mongoose.model('SubSection', Section);
+const User = mongoose.model('Section', Section);
 
 module.exports = User;
