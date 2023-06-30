@@ -23,7 +23,7 @@ exports.resetPasswordToken = async(req,res)=>{
     const token = crypto.randomUUID();
 
     // update user by adding token and expiration time
-    const updatedDetails = await User.findOneAndUpdate({email:email},{token:token,resetPasswordToken: Date.now() + 5*60*100},{new:true});
+    const updatedDetails = await User.findOneAndUpdate({email:email},{token:token,resetPasswordToken: Date.now() + 5*60*1000},{new:true});
     // create Url
     const url = `https://localhost:3000/update-password/${token}`;
     // send mail containing the url
@@ -89,6 +89,5 @@ exports.resetPassword = async(req,res)=>{
             success:false,
             message:"Password reset Unsuccessfull",
         });
-
     }
 }

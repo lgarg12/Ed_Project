@@ -20,6 +20,7 @@
   "homepage": "https://github.com/lgarg12/Ed_Project#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "cloudinary": "^1.37.1",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.1.4",
     "express": "^4.18.2",

@@ -15,15 +15,16 @@ exports.auth = async(req,res,next) =>{
         }
         // Verify User
         try{
-            const decode = await jwt.verify(token,"lakshay");
+            const decode = jwt.verify(token,"lakshay");
             console.log(decode);
             req.user = decode;
         } catch(error){
             return res.status(401).json({
                 success:false,
-                message:'token is invalid',  
+                message:'Token is invalid',  
             });
         }
+        next();
     } catch(error) {
         console.log(error);
         return res.status(500).json({
@@ -39,7 +40,7 @@ exports.isStudent = async(req,res,next)=>{
         if(req.user.accountType !=="Student"){
             return res.status(401).json({
                 success:false,
-                message:'This is a protexted Route for student only',
+                message:'This is a protected Route for student only',
             })
         }
         next();

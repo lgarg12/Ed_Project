@@ -21,11 +21,11 @@ const Course = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"Section"
     },
-    ratingAndReviews:{
+    ratingAndReviews:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:"RatingAndReview",
-    },
-    prices:{
+    }],
+    price:{
         type:Number,
     },
     thumbnail:{
@@ -35,11 +35,11 @@ const Course = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"Tag"
     },
-    studentsEnrolled:{
+    studentsEnrolled:[{
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: "User",
-    }
+    }]
 });
 
 const User = mongoose.model('Course', Course);

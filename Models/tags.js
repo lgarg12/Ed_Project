@@ -12,7 +12,6 @@ const Tags = new mongoose.Schema({
     type:mongoose.Schema.Types.ObjectId,
     ref:"Course",
   }
-
 });
 
 const User = mongoose.model('Tags', Tags);

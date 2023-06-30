@@ -17,6 +17,7 @@ exports.sendOTP = async (req,res)=>{
 
         //check if user is Present
         const checkUserPresent = await User.findOne({email});
+
         if(checkUserPresent){
             return res.status(401).json({
                 success:false,
@@ -62,13 +63,8 @@ exports.sendOTP = async (req,res)=>{
             success:true,
             message:error.message,
         })
-    }   
-    
+    }    
 }
-
-
-
-
 
 //Sign up
 exports.signUp = async (req,res)=>{
@@ -99,7 +95,7 @@ exports.signUp = async (req,res)=>{
         if(password !== confirmPassword){
             return res.status(400).json({
                 success:false,
-                message:"Password and Confirm Value does not match, please try",
+                message:"Password and ConfirmPassword Value does not match, please try",
             })
         }
     //check user already exist or not
@@ -116,18 +112,19 @@ exports.signUp = async (req,res)=>{
     console.log(recentOtp);
 
     //Validate OTP
-        if(recentOtp.length == 0){
-            return res.status(400).json({
-                success:false,
-                message:"OTP Found"
-            })
-        } else if(otp!==recentOtp){
-            //Invalid OTP
-            return res.status(400).json({
-                success:false,
-                message:"Invalid OTP",
-            })
-        }   
+    if(recentOtp.length == 0){
+        return res.status(400).json({
+            success:false,
+            message:"OTP not Found"
+        })
+    } 
+    else if(otp!==recentOtp.otp){
+        //Invalid OTP
+        return res.status(400).json({
+            success:false,
+            message:"Invalid OTP",
+        })
+    }   
 
 
     //Hash password
